@@ -1,0 +1,9 @@
+overwrite: true
+    schema: "https://zeitraffer.app/api/v2/graphql"
+    documents: "apollo/**/*.graphql"
+    generates:
+      types/graphql.d.ts:
+        - typescript-graphql-files-modules
+      types/types.ts:
+        - typescript
+        - typescript-operations
