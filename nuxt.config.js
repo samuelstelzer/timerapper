@@ -27,10 +27,10 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    "bootstrap-vue/nuxt",
     // https://github.com/nuxt-community/apollo-module
-    "@nuxtjs/apollo"
+    "@nuxtjs/apollo",
+    "@nuxtjs/auth",
+    "@nuxtjs/vuetify"
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
@@ -40,7 +40,19 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "https://zeitraffer.app/api/v2/graphql"
+        httpEndpoint: "https://zeitraffer.app/api/v3/graphql"
+      }
+    }
+  },
+  vuetify: {
+    theme: {
+      themes: {
+        light: {
+          primary: "#2A4758",
+          secondary: "#3EA172",
+          accent: "#FAC535",
+          error: "#E45052"
+        }
       }
     }
   }

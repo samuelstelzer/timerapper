@@ -1,12 +1,13 @@
 <template>
   <v-container>
-    <h1>Erstelle ein Event</h1>
-    <BaseEventForm />
+    <h1>Login</h1>
   </v-container>
 </template>
 
 <script>
 export default {
-  name: "CreateEvent"
+  name: "login"
 };
 </script>
+
+<style></style>
