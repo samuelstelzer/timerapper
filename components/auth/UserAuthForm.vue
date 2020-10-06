@@ -47,6 +47,7 @@ export default {
       showPassword: false,
       //hasName: false,
       userInfo: {
+        name: "Flo",
         email: "florianfindeisen@gmx.de",
         password: "Z75365er",
       },
