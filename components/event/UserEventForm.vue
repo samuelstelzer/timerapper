@@ -40,10 +40,20 @@
     <v-container :v-if="dates">
       <v-row align="center" justify="start">
         <v-col v-for="(date, i) in sortedDates" :key="i" class="shrink">
-          <v-chip color="secondary" close @click:close="dates.splice(i, 1)">{{
-            formatDate(date)
-          }}</v-chip>
+          <v-chip
+            color="secondary"
+            close
+            @click="itemclicked(date)"
+            @click:close="dates.splice(i, 1)"
+            >{{ formatDate(date) }}</v-chip
+          >
         </v-col>
+        <v-overlay :absolute="absolute" :value="overlay">
+          <v-col style="width: 350px; flex: 0 1 auto;" align="center">
+          <v-time-picker v-model="picker" elevation="15"></v-time-picker>
+          <v-btn color="success" @click="overlay = false"> OK </v-btn>
+          </v-col>
+        </v-overlay>
       </v-row>
     </v-container>
   </v-form>
@@ -53,6 +63,8 @@
 export default {
   name: "UserEventForm",
   data: () => ({
+    absolute: true,
+    overlay: false,
     valid: false,
     eventName: "",
     eventnameRules: [(v) => !!v || "Bitte gib einen Namen für dein Event an."],
@@ -64,6 +76,9 @@ export default {
     dates: [],
   }),
   methods: {
+    itemclicked(selectedItem) {
+      this.overlay = true;
+    },
     handleSubmit() {
       const { eventName, location, userName, description } = this.formData;
       const payload = {

@@ -41,9 +41,14 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "https://zeitraffer.app/api/v3/graphql"
+        httpEndpoint: "https://zeitraffer.app/api/v3/graphql",
+        httpLinkOptions: {
+          credentials: 'same-origin'
+      },
+        tokenName: 'auth._token.local'
       }
-    }
+    },
+    authenticationType: ''
   },
   vuetify: {
     theme: {

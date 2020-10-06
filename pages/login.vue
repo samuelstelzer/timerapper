@@ -14,11 +14,17 @@ export default {
     UserAuthForm,
   },
   methods: {
-    loginUser(logininfo) {
-      console.log(logininfo.email);
-      this.$auth.loginWith("local", {
-        data: logininfo,
-      });
+    async loginUser(logininfo) {
+      //console.log(logininfo.email);
+      try {
+        await this.$auth.loginWith("local", {
+          data: logininfo,
+        })
+        this.$router.push('/')
+      } catch (error) {
+        // Complete ERROR Handling with Snackbar
+        console.log(error);
+      }
     },
   },
 };
