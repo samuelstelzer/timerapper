@@ -27,18 +27,51 @@ export default {
 
   // Modules (https://go.nuxtjs.dev/config-modules)
   modules: [
-    // https://go.nuxtjs.dev/bootstrap
-    "bootstrap-vue/nuxt",
-    "@nuxtjs/apollo"
+    // https://github.com/nuxt-community/apollo-module
+    "@nuxtjs/apollo",
+    "@nuxtjs/auth",
+    "@nuxtjs/axios",
+    "@nuxtjs/vuetify"
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)
   build: {},
 
+  // Apollo/GraphQL Configuration (https://github.com/nuxt-community/apollo-module#setup)
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "https://zeitraffer.app/api/v2/graphql"
+        httpEndpoint: "https://zeitraffer.app/api/v3/graphql"
+      }
+    }
+  },
+  vuetify: {
+    theme: {
+      themes: {
+        light: {
+          primary: "#2A4758",
+          secondary: "#3EA172",
+          accent: "#FAC535",
+          error: "#E45052"
+        }
+      }
+    }
+  },
+  axios: {
+    baseURL: 'https://zeitraffer.app/api/v3'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/auth/logout', method: 'delete' },
+          user: { url: '/sessions/user', method: 'get', propertyName: 'user' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+        // globalToken: true,
+        // autoFetchUser: true
       }
     }
   }
