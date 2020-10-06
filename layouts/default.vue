@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <v-app-bar app color="primary">
-      <v-btn text to="/">Home</v-btn>
+      <v-btn class="hidden-xs-only" text to="/">Home</v-btn>
       <v-spacer />
       <div v-if="$auth.loggedIn">
         {{ $auth.user.email }}

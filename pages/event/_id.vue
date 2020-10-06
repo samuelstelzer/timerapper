@@ -1,27 +1,32 @@
 <template>
-  <div class="container"></div>
+  <v-container>
+    <v-row v-for="(value, key) in getEvent" :key="value">
+      {{ key }}: {{ value }}
+    </v-row>
+  </v-container>
 </template>
 
 <script>
-import EVENT from "@/apollo/queries/event.ts";
+import EVENT_SHORT from "@/apollo/queries/event_short.ts";
 
 export default {
   name: "event",
   data() {
     return {
-      eventId: this.$route.params.event
+      eventId: this.$route.params.id,
+      getEvent: {},
     };
   },
   apollo: {
-    event: {
-      query: EVENT,
+    getEvent: {
+      query: EVENT_SHORT,
       variables() {
         return {
-          event: this.eventId
+          uuidEvent: this.eventId,
         };
-      }
-    }
-  }
+      },
+    },
+  },
 };
 </script>
 

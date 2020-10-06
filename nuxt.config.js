@@ -30,6 +30,7 @@ export default {
     // https://github.com/nuxt-community/apollo-module
     "@nuxtjs/apollo",
     "@nuxtjs/auth",
+    "@nuxtjs/axios",
     "@nuxtjs/vuetify"
   ],
 
@@ -53,6 +54,24 @@ export default {
           accent: "#FAC535",
           error: "#E45052"
         }
+      }
+    }
+  },
+  axios: {
+    baseURL: 'https://zeitraffer.app/api/v3'
+  },
+  auth: {
+    strategies: {
+      local: {
+        endpoints: {
+          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/auth/logout', method: 'delete' },
+          user: { url: '/sessions/user', method: 'get', propertyName: 'user' }
+        },
+        // tokenRequired: true,
+        // tokenType: 'bearer',
+        // globalToken: true,
+        // autoFetchUser: true
       }
     }
   }
