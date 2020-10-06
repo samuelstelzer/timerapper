@@ -1,6 +1,6 @@
 <template>
   <v-container>
-    <h1>Register</h1>
+    <h1>Register!</h1>
   </v-container>
 </template>
 
