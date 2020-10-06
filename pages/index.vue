@@ -1,7 +1,11 @@
 <template>
   <v-container>
-    <div><h1 class="display-3">Zeitraffer</h1></div>
-    <div><v-btn to="/event/create" color="#2c3e51">Create Event</v-btn></div>
+    <div><h1 class="display-3" align="center">Zeitraffer</h1></div>
+    <div align="center">
+      <v-btn to="/event/create" color="#2c3e51" align="center"
+        >Create Event</v-btn
+      >
+    </div>
   </v-container>
 </template>
 

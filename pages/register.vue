@@ -19,12 +19,16 @@ export default {
   },
   methods: {
     async registerUser(registrationinfo) {
-      console.log(registrationinfo);
-      await this.$axios.post("/auth/register", registrationinfo);
+      try {
+        await this.$axios.post("/auth/register", registrationinfo);
       this.$auth.loginWith("local", {
         data: registrationinfo,
-      });
-      //alert("Manfred das mürrische Etwas");
+      })
+      this.$router.push('/')
+      } catch (error) {
+        // Complete ERROR Handling with Snackbar
+        console.log(error)
+      }
     },
   },
 };
