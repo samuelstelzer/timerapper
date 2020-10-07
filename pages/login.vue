@@ -20,6 +20,8 @@ export default {
         await this.$auth.loginWith("local", {
           data: logininfo,
         })
+        this.$cookies.remove('uuid')
+        this.$cookies.remove('secret')
         this.$router.push('/')
       } catch (error) {
         // Complete ERROR Handling with Snackbar

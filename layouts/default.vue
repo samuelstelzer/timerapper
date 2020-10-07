@@ -6,6 +6,9 @@
         {{ $auth.user.email }}
         <v-btn text to="/myEvents">My Events</v-btn>
       </div>
+      <div v-if="guest">
+        <v-btn text to="/">{{ guest }}</v-btn>
+      </div>
       <v-spacer />
       <div v-if="$auth.loggedIn">
         {{ $auth.user.email }}
@@ -19,10 +22,49 @@
     <v-main>
       <Nuxt />
     </v-main>
-    <v-footer app style="color: white" color="primary">Made with ❤️ in Munich & Stuttgart</v-footer>
+    <v-footer app style="color: white" color="primary"
+      ><v-row
+      justify="center"
+      no-gutters
+    ><v-btn
+        v-for="link in links"
+        :key="link"
+        color="white"
+        text
+        rounded
+        class="my-2"
+      >
+        {{ link }}
+      </v-btn>
+    </v-row> </v-footer
+    >
   </v-app>
 </template>
-
+<script>
+export default {
+  data() {
+    return {
+      guest: false,
+      links: [
+        'AGBs',
+        'Datenschutz',
+        'Contact us',
+      ]
+    }
+  },
+  async created() {
+    if (this.$cookies.get("uuid") != undefined) {
+      const uuid = this.$cookies.get("uuid");
+      const secret = this.$cookies.get("secret");
+      const { data } = await this.$axios.get(
+        "https://zeitraffer.app/api/v3/guest?uuid=" + uuid + "&secret=" + secret
+      );
+      if (data.name != "undefined") {
+        this.guest = data.name;
+      }
+    }
+  },
+};
+</script>
 <style>
-
 </style>
