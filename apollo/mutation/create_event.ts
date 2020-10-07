@@ -2,7 +2,6 @@ import gql from 'graphql-tag';
 
 const USER_CREATE_EVENT = gql`
 mutation userCreateEvent(
-    $token: String!,
     $maxParticipants: Int,
     $isVote: String,
     $deadline: String,
@@ -24,10 +23,9 @@ mutation userCreateEvent(
             startTime: $startTime,
             title: $title,
             timings: $timings
-        },
-        token: $token
+        }
     ) {
-        eventid
+        eventId
     }
 }
 `;

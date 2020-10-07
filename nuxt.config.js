@@ -9,6 +9,10 @@ export default {
     ],
     link: [{ rel: "icon", type: "image/x-icon", href: "/favicon.ico" }]
   },
+  server: {
+    port: 3001, // default: 3000
+    host: '0.0.0.0' // default: localhost
+  },
 
   // Global CSS (https://go.nuxtjs.dev/config-css)
   css: [],
@@ -31,7 +35,8 @@ export default {
     "@nuxtjs/apollo",
     "@nuxtjs/auth",
     "@nuxtjs/axios",
-    "@nuxtjs/vuetify"
+    "@nuxtjs/vuetify",
+    'cookie-universal-nuxt'
   ],
 
   // Build Configuration (https://go.nuxtjs.dev/config-build)

@@ -1,8 +1,8 @@
 import gql from "graphql-tag";
 
 const EVENT = gql`
-  query getEvent($event: String!) {
-    getEvent(idevent: $eventid) {
+  query getEvent($uuidEvent: String!) {
+    getEvent(idevent: $uuidEvent) {
       description
       isActive
       location
