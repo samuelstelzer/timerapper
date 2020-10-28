@@ -18,16 +18,14 @@ export default {
     UserAuthForm,
   },
   methods: {
-    async registerUser(registrationinfo) {
+    async registerUser(registrationInfo) {
       try {
-        await this.$axios.post("/auth/register", registrationinfo);
-      this.$auth.loginWith("local", {
-        data: registrationinfo,
-      })
-      this.$router.push('/')
+        await this.$axios.post("/register", registrationInfo);
+        await this.$auth.loginWith("local", { data: registrationInfo });
+        this.$router.push("/");
       } catch (error) {
         // Complete ERROR Handling with Snackbar
-        console.log(error)
+        console.log(error);
       }
     },
   },

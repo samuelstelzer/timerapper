@@ -46,10 +46,10 @@ export default {
   apollo: {
     clientConfigs: {
       default: {
-        httpEndpoint: "https://zeitraffer.app/api/v3/graphql",
+        httpEndpoint: '//localhost:5000/graphql',
         httpLinkOptions: {
           credentials: 'same-origin'
-      },
+        },
         tokenName: 'auth._token.local'
       }
     },
@@ -68,15 +68,15 @@ export default {
     }
   },
   axios: {
-    baseURL: 'https://zeitraffer.app/api/v3'
+    baseURL: '//localhost:5000'
   },
   auth: {
     strategies: {
       local: {
         endpoints: {
-          login: { url: '/auth/login', method: 'post', propertyName: 'token' },
-          logout: { url: '/auth/logout', method: 'delete' },
-          user: { url: '/sessions/user', method: 'get', propertyName: 'user' }
+          login: { url: '/login', method: 'post', propertyName: 'token' },
+          logout: { url: '/logout', method: 'delete' },
+          user: { url: '/user', method: 'get', propertyName: 'user' }
         },
         // tokenRequired: true,
         // tokenType: 'bearer',
