@@ -1,33 +1,23 @@
 import gql from 'graphql-tag';
 
 const USER_CREATE_EVENT = gql`
-mutation userCreateEvent(
-    $maxParticipants: Int,
-    $isVote: String,
-    $deadline: String,
-    $description: String,
-    $endTime: String,
-    $location: String,
-    $startTime: DateTime,
-    $title: String!,
-    $timings: String
-    ) {
-    userCreateEvent(
-        eventData:{
-            description: $description,
-            maxParticipants: $maxParticipants,
-            isVote:  $isVote,
-            deadline: $deadline,
-            endTime: $endTime,
-            location: $location,
-            startTime: $startTime,
-            title: $title,
-            timings: $timings
+mutation CreateEvent(
+            $title: String!,
+            $description: String,
+            $voting: VotingInput,
+            $dates: [DateInput],
+            $password: String
+        ) 
+        {
+        createEvent(title:$title, description: $description, dates: $dates, voting: $voting, password: $password) {
+            event {
+                title
+                timeCreated
+                description
+                }
+            eventId
+            }
         }
-    ) {
-        eventId
-    }
-}
 `;
 
 export default USER_CREATE_EVENT;
