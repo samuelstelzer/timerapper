@@ -23,21 +23,19 @@
       <Nuxt />
     </v-main>
     <v-footer app style="color: white" color="primary"
-      ><v-row
-      justify="center"
-      no-gutters
-    ><v-btn
-        v-for="link in links"
-        :key="link"
-        color="white"
-        text
-        rounded
-        class="my-2"
-      >
-        {{ link }}
-      </v-btn>
-    </v-row> </v-footer
-    >
+      ><v-row justify="center" no-gutters
+        ><v-btn
+          v-for="link in links"
+          :key="link"
+          color="white"
+          text
+          rounded
+          class="my-2"
+        >
+          {{ link }}
+        </v-btn>
+      </v-row>
+    </v-footer>
   </v-app>
 </template>
 <script>
@@ -45,12 +43,8 @@ export default {
   data() {
     return {
       guest: false,
-      links: [
-        'AGBs',
-        'Datenschutz',
-        'Contact us',
-      ]
-    }
+      links: ["AGBs", "Datenschutz", "Contact us"],
+    };
   },
   async created() {
     if (this.$cookies.get("uuid") != undefined) {

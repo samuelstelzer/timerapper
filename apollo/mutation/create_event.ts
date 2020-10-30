@@ -2,14 +2,12 @@ import gql from 'graphql-tag';
 
 const USER_CREATE_EVENT = gql`
 mutation CreateEvent(
-            $title: String!,
-            $description: String,
-            $voting: VotingInput,
-            $dates: [DateInput],
-            $password: String
+            $event: EventInput!,
+            $name: String,
+            $email: String
         ) 
         {
-        createEvent(title:$title, description: $description, dates: $dates, voting: $voting, password: $password) {
+        newEvent(event: $event, name: $name, email: $email) {
             event {
                 title
                 timeCreated

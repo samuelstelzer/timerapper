@@ -1,8 +1,9 @@
 import LocationModel from "./location";
+import { format_date } from "~/utils/date_utils";
 
 export default class DateModel {
-    start: Date;
-    end: Date;
+    start: string;
+    end: string;
     location: LocationModel;
 
     constructor(
@@ -10,8 +11,8 @@ export default class DateModel {
         end: Date,
         location: LocationModel
     ) {
-        this.start = start;
-        this.end = end;
+        this.start = format_date(start);
+        this.end = format_date(end);
         this.location = location;
     }
 }

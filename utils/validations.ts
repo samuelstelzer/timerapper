@@ -1,6 +1,7 @@
 let required = (propertyType: any, customErrorMessage: any) => {
     return (v: string | any[]) => v && v.length > 0 || customErrorMessage || `You must input a ${propertyType}`
 }
+
 let minLength = (propertyType: any, minLength: number) => {
     return (v: string | any[]) => {
         if (!v) { return true; }

@@ -5,10 +5,10 @@ export default class EventModel {
     public title: String;
     public description: String;
     public password?: String;
-    public subscribers: Array<String>;
+    public subscribers?: Array<String>;
     public dates: Array<DateModel>;
     public voting?: VotingModel;
-    public admins: Array<String> = [];
+    public admins?: Array<String>;
 
     public constructor(
         title: String = "",
@@ -21,9 +21,9 @@ export default class EventModel {
         this.title = title;
         this.description = description ? description : '';
         this.password = password ? password : undefined;
-        this.subscribers = subscribers ? subscribers : [];
-        this.dates = dates ? dates : [];
+        this.subscribers = subscribers ? subscribers : undefined;
         this.voting = voting ? voting : undefined;
+        this.dates = dates ? dates : [];
     }
 
     public addDate(date: DateModel) {
@@ -35,18 +35,30 @@ export default class EventModel {
     }
 
     public addSubscriber(subscriber: String) {
-        this.subscribers.push(subscriber);
+        if (this.subscribers) {
+            this.subscribers.push(subscriber);
+        } else {
+            this.subscribers = [subscriber];
+        }
     }
 
     public removeSubscriber(subscriber: String) {
-        this.subscribers = this.subscribers.filter(d => d != subscriber);
+        if (this.subscribers) {
+            this.subscribers = this.subscribers.filter(d => d != subscriber);
+        }
     }
 
     public addAdmin(admin: String) {
-        this.admins.push(admin);
+        if (this.admins) {
+            this.admins.push(admin);
+        } else {
+            this.admins = [admin];
+        }
     }
 
     public removeAdmin(admin: String) {
-        this.admins = this.admins.filter(d => d != admin);
+        if (this.admins) {
+            this.admins = this.admins.filter(d => d != admin);
+        }
     }
 }

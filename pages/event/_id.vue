@@ -13,7 +13,7 @@
         >
         <v-card-text align="center">{{ getEvent.description }}</v-card-text>
       </v-card>
-     <!-- <div v-if="getEvent.timeVotes.edges !== 'undefined' || getEvent.timeVotes.edges.length > 0">
+      <!-- <div v-if="getEvent.timeVotes.edges !== 'undefined' || getEvent.timeVotes.edges.length > 0">
         <v-col
           md="4"
           v-for="(key, i) in getEvent.timeVotes.edges"
